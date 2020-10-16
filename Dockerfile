@@ -3,21 +3,21 @@ FROM centos/python-36-centos7:latest
 ### -------------------------------------------------
 ### Metadata information
 ### -------------------------------------------------
-LABEL name="dalmasca"
-LABEL maintainer="packetferret@gmail.com"
+LABEL name="FourSicks"
+LABEL maintainer="andytnorwood@gmail.com"
 LABEL description="network devops container"
 LABEL license="GPLv2"
-LABEL url="https://github.com/packetferret/dalmasca"
-LABEL build-date="20200201"
+LABEL url="https://github.com/"
+LABEL build-date="16102020"
 
 ### -------------------------------------------------
 ### Install system Packages
 ### -------------------------------------------------
 USER root
-RUN apt update 
-RUN apt upgrade -y
-RUN apt install nano nmap wget python3 python3-pip telnet zsh openssh-client -y
-RUN apt autoremove
+RUN yum -y update 
+RUN yum -y install nano nmap wget telnet zsh openssh-client
+RUN yum clean all
+RUN rm -rf /tmp/* /var/tmp/*
 
 ### -------------------------------------------------
 ### Change directory to /home/tmp
@@ -28,7 +28,8 @@ WORKDIR /home/tmp/files
 ### Add and install python packages
 ### -------------------------------------------------
 ADD config/requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
+RUN pip install --upgrade pip
 
 ### -------------------------------------------------
 ### Install Ansible Galaxy roles
