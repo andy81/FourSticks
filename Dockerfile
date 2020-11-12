@@ -14,8 +14,8 @@ LABEL build-date="12112020"
 ### Install system Packages
 ### -------------------------------------------------
 USER root
-RUN apt update -y
-RUN yapt install -y nano curl git nmap wget telnet zsh openssh-client
+RUN apt update && apt upgrade -y
+RUN apt install -y nano curl git nmap wget telnet zsh openssh-client 
 
 ### -------------------------------------------------
 ### Change directory to /home/tmp
@@ -42,10 +42,9 @@ RUN ansible-galaxy collection install cisco.ios netbox.netbox
 ### -------------------------------------------------
 ### Change directory to /opt/app-root/src/ansible
 ### -------------------------------------------------
-WORKDIR /opt/app-root/src/ansible
+
 
 ### -------------------------------------------------
 ### Environmentals
 ### -------------------------------------------------
 ENV HAPPY True
-ENV ANSIBLE_CONFIG /opt/app-root/src/ansible/ansible.cfg
