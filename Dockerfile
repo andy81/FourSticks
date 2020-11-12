@@ -1,4 +1,4 @@
-FROM centos/python-36-centos7:latest
+FROM python:3.9-slim
 
 ### -------------------------------------------------
 ### Metadata information
@@ -8,16 +8,14 @@ LABEL maintainer="andytnorwood@gmail.com"
 LABEL description="network devops container"
 LABEL license="GPLv2"
 LABEL url="https://github.com/"
-LABEL build-date="16102020"
+LABEL build-date="12112020"
 
 ### -------------------------------------------------
 ### Install system Packages
 ### -------------------------------------------------
 USER root
-RUN yum -y update 
-RUN yum -y install nano nmap wget telnet zsh openssh-client
-RUN yum clean all
-RUN rm -rf /tmp/* /var/tmp/*
+RUN apt update -y
+RUN yapt install -y nano curl git nmap wget telnet zsh openssh-client
 
 ### -------------------------------------------------
 ### Change directory to /home/tmp
@@ -34,7 +32,7 @@ RUN pip install --upgrade pip
 ### -------------------------------------------------
 ### Install Ansible Galaxy roles
 ### -------------------------------------------------
-RUN ansible-galaxy collection install cisco.ios
+RUN ansible-galaxy collection install cisco.ios netbox.netbox
 
 ### -------------------------------------------------
 ### Copy local files to container
