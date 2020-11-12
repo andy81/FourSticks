@@ -1,4 +1,4 @@
-DOCKER_IMG = packetferret/dalmasca
+DOCKER_IMG = andynorwood/FourSticks
 DOCKER_TAG = latest
 
 build:
