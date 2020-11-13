@@ -15,7 +15,7 @@ LABEL build-date="12112020"
 ### -------------------------------------------------
 USER root
 RUN apt update && apt upgrade -y
-RUN apt install -y nano curl git nmap wget telnet zsh openssh-client 
+RUN apt install -y nano curl git nmap wget telnet zsh openssh-client fonts-powerline
 
 ### -------------------------------------------------
 ### Change directory to /home/tmp
