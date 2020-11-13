@@ -45,6 +45,10 @@ RUN ansible-galaxy collection install cisco.ios netbox.netbox
 
 
 ### -------------------------------------------------
-### Environmentals
+### setup oh mt zsh
 ### -------------------------------------------------
-ENV HAPPY True
+ENV ZSH_THEME agnoster
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+
+# maybe this to start zsh
+CMD [ "zsh" 
