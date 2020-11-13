@@ -15,6 +15,7 @@ textfsm==0.4.1
 ntc-ansible
 PyYAML
 pyats
+genie
 regex
 requests
 xmltodict
